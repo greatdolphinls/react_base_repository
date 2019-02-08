@@ -6,9 +6,9 @@ import NewUserReducer from './NewUserReducer';
 import JobReducer from './JobReducer';
 
 export default combineReducers({
+  form: formReducer,
   auth: AuthReducer,
   user: UserReducer,
   newUser: NewUserReducer,
-  job: JobReducer,
-  form: formReducer,
+  job: JobReducer
 });

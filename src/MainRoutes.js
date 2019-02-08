@@ -1,6 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import {PrivateRoute} from './layout/route/PrivateRoute';
+import {AdminRoute} from './layout/route/AdminRoute';
+
 import Home from './container/Home/Home';
 import About from './container/About/About';
 import Post from './container/Post/Post';
@@ -11,9 +14,6 @@ import JobList from './container/Job/JobList';
 import JobCreate from './container/Job/JobCreate';
 import JobEdit from './container/Job/JobEdit';
 import JobShow from './container/Job/JobShow';
-
-import {PrivateRoute} from './layout/route/PrivateRoute';
-import {AdminRoute} from './layout/route/AdminRoute';
 
 const MainRoutes = () => (
   <Switch>

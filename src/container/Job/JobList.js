@@ -69,9 +69,10 @@ class JobList extends Component {
   render() {
     return (
       <div>
-        <h2>jobs</h2>
-        {/* {this.props.jobs} */}
-        {this.renderCreate()}
+        <div>
+          <h2>Job List</h2>
+          {this.renderCreate()}
+        </div>
         <div className="ui celled list">{this.renderList()}</div>
       </div>
     );
