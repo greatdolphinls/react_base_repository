@@ -4,7 +4,6 @@ import * as types from './types';
 export const logIn = (email, password) => async (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST });
   const user = await API.auth(email, password);
-  console.log("Login user", user);
   if (!user.error) {
     await localStorage.setItem('token', user.token);
     await localStorage.setItem('user', user.user);
@@ -24,7 +23,6 @@ export const logOut = () => async (dispatch) => {
   await localStorage.removeItem('user');
   dispatch({ type: types.CLEAR_USER });
   dispatch({ type: types.LOGOUT_SUCCESS });
-  console.log("logout");
 };
 
 export const checkAuthorization = () => async (dispatch) => {

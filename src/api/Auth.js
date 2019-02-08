@@ -18,7 +18,7 @@ export const auth = async (email, password) => {
 };
 
 export const currentUser = async () => {
-  const url = '/getMe' + '?token=' + localStorage.getItem('token');
+  const url = '/getMe?token=' + localStorage.getItem('token');
   const result = await axios.post(url);
   return result.data.user;
 };

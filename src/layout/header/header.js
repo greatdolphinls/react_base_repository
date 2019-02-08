@@ -36,6 +36,7 @@ class Header extends Component{
               : null
             }
             <li className="nav-item"><NavLink className="nav-link" to='/about' exact> About </NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to='/job' exact> Job </NavLink></li>
             {!this.props.isAuth ?
               <React.Fragment>
                 <li className="nav-item"><NavLink className="nav-link" to='/signin' exact> Sign In </NavLink></li>

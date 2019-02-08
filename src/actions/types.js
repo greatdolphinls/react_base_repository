@@ -17,3 +17,8 @@ export const CLEAR_NEWUSER_MESSAGE = 'clear_newuser_message';
 
 export const SET_ACTIVE_ITEM = 'set_active_item';
 
+export const CREATE_JOB = 'CREATE_JOB';
+export const FETCH_JOBS = 'FETCH_JOBS';
+export const FETCH_JOB = 'FETCH_JOB';
+export const DELETE_JOB = 'DELETE_JOB';
+export const EDIT_JOB = 'EDIT_JOB';
