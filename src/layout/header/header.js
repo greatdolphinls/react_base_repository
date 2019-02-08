@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { logOut } from '../../actions';
+import LanguageSelector from '../languageSelector/languageSelector';
+import LanguageContext from '../../context/LanguageContext';
 
 const propTypes = {
   logOut: PropTypes.func.isRequired,
@@ -28,7 +30,11 @@ class Header extends Component{
         <NavLink className="navbar-brand" to="/">BaseApp</NavLink>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li className="nav-item"><NavLink className="nav-link" to='/' exact> Home </NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to='/' exact>
+              <LanguageContext.Consumer>
+                {({ language }) => language === 'english' ? 'Home' : 'Dutch Home'}
+              </LanguageContext.Consumer>
+             </NavLink></li>
             {this.props.isAdmin ?
               <React.Fragment>
                 <li className="nav-item"><NavLink className="nav-link" to='/post' exact> Post </NavLink></li>
@@ -45,6 +51,7 @@ class Header extends Component{
               : null
             }
           </ul>
+          <LanguageSelector />
           {this.props.isAuth ?
             <React.Fragment>
               <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.handleLogOut}>Logout</button>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { fetchJobs, deleteJob } from '../../actions';
+import Modal from '../../layout/modal/modal';
 
 const propTypes = {
   fetchJobs: PropTypes.func.isRequired,
@@ -15,11 +16,19 @@ const propTypes = {
 };
 
 class JobList extends Component {
+
+  state = {
+    modalShow: false,
+    id: null
+  }
   componentDidMount() {
     this.props.fetchJobs();
     console.log("jobs", this.props.jobs);
   }
 
+  deleteHandle(id){
+    this.setState({modalShow: true, id: id});
+  }
 
   renderAdmin(job) {
     return (
@@ -28,7 +37,7 @@ class JobList extends Component {
           Edit
         </Link>
         <button
-          onClick={()=>this.props.deleteJob(job.id)}
+          onClick={()=>this.deleteHandle(job.id)}
           className="float-right btn btn-danger"
         >
           Delete
@@ -66,6 +75,28 @@ class JobList extends Component {
     }
   }
 
+  renderDeleteActions() {
+    const { id } = this.state;
+
+    return (
+      <React.Fragment>
+        <button
+          onClick={() => this.props.deleteJob(id)}
+          className="btn btn-danger"
+        >
+          Delete
+        </button>
+        <Link to="/job" className="btn btn-info">
+          Cancel
+        </Link>
+      </React.Fragment>
+    );
+  }
+
+  renderDeleteContent() {
+    return 'Are you sure you want to delete this stream?';
+  }
+
   render() {
     return (
       <div>
@@ -74,6 +105,15 @@ class JobList extends Component {
           {this.renderCreate()}
         </div>
         <div className="ui celled list">{this.renderList()}</div>
+        {this.state.modalShow?
+          <Modal
+            title="Delete Job"
+            content={this.renderDeleteContent()}
+            actions={this.renderDeleteActions()}
+            onDismiss={() => this.props.history.push('/job')}
+          />
+        :null
+        }
       </div>
     );
   }

@@ -14,6 +14,8 @@ import JobList from './container/Job/JobList';
 import JobCreate from './container/Job/JobCreate';
 import JobEdit from './container/Job/JobEdit';
 import JobShow from './container/Job/JobShow';
+import JobDelete from './container/Job/JobDelete';
+
 
 const MainRoutes = () => (
   <Switch>
@@ -22,6 +24,7 @@ const MainRoutes = () => (
     <PrivateRoute exact path="/job" component={JobList} />
     <PrivateRoute exact path="/job/new" component={JobCreate} />
     <PrivateRoute exact path="/job/edit/:id" component={JobEdit} />
+    <PrivateRoute exact path="/job/delete/:id" component={JobDelete} />
     <PrivateRoute exact path="/job/:id" component={JobShow} />
     <AdminRoute exact path="/post" component={Post} />
     <Route exact path="/signin" component={SignIn} />

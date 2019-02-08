@@ -6,12 +6,14 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';
 import history from './setting/history';
-
+import { LanguageStore } from './context/LanguageContext';
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <App />
-    </Router>
+    <LanguageStore>
+      <Router history={history}>
+        <App />
+      </Router>
+    </LanguageStore>
   </Provider>,
   document.getElementById('root'),
 );
